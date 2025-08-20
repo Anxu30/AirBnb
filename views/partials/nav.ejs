@@ -1,0 +1,83 @@
+<nav
+  class="bg-gradient-to-r from-cyan-800 via-purple-800 to-pink-700 shadow-lg w-full z-50"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-4">
+        <div class="flex-shrink-0 flex items-center">
+          <a href="/" class="flex items-center gap-2 group">
+            <span class="text-3xl">🏠</span>
+            <span
+              class="text-2xl font-extrabold bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200 drop-shadow-lg <%= currentPage=='AirBnb' ? 'underline decoration-red-400' : '' %>"
+            >
+              AirBnb
+            </span>
+          </a>
+        </div>
+
+        <ul class="flex items-center gap-2 md:gap-4">
+          <% if(isLoggedIn && user) { %> <% if(user === 'guest') { %>
+          <li>
+            <a
+              href="/homes"
+              class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='Homes' ? 'bg-white/20 text-yellow-300 shadow-lg' : 'hover:bg-white/10 hover:text-yellow-200' %>"
+            >
+              <span class="mr-1">🏡</span> Homes
+            </a>
+          </li>
+          <li>
+            <a
+              href="/favorites"
+              class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='Favorites' ? 'bg-white/20 text-pink-300 shadow-lg' : 'hover:bg-white/10 hover:text-pink-200' %>"
+            >
+              <span class="mr-1">🤍</span> Favorites
+            </a>
+          </li>
+          <li>
+            <a
+              href="/bookings"
+              class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='Bookings' ? 'bg-white/20 text-purple-300 shadow-lg' : 'hover:bg-white/10 hover:text-purple-200' %>"
+            >
+              <span class="mr-1">📅</span> Bookings
+            </a>
+          </li>
+          <% } %> <% if(user === 'host') { %>
+          <li>
+            <a
+              href="/hosthomes"
+              class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='HostHomes' ? 'bg-white/20 text-yellow-300 shadow-lg' : 'hover:bg-white/10 hover:text-yellow-200' %>"
+            >
+              <span class="mr-1">🏠</span> Host Homes
+            </a>
+          </li>
+          <li>
+            <a
+              href="/host/editHome"
+              class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='Add Home' ? 'bg-white/20 text-pink-300 shadow-lg' : 'hover:bg-white/10 hover:text-pink-200' %>"
+            >
+              <span class="mr-1">➕</span> Add Home
+            </a>
+          </li>
+          <% } %> <% } %>
+        </ul>
+      </div>
+      <div>
+        <% if(isLoggedIn && user) { %>
+        <a
+          href="/logout"
+          class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='login' ? 'bg-white/20 text-red-300 shadow-lg' : 'hover:bg-white/10 hover:text-red-200' %>"
+        >
+          <span class="mr-1">🚪</span> Log Out
+        </a>
+        <% } else { %>
+        <a
+          href="/login"
+          class="px-4 py-2 rounded-full font-semibold transition-all duration-200 <%= currentPage=='login' ? 'bg-white/20 text-yellow-300 shadow-lg' : 'hover:bg-white/10 hover:text-yellow-200' %>"
+        >
+          <span class="mr-1">🔑</span> Log In
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

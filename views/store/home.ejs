@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIR BNB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 1.2s cubic-bezier(0.4,0,0.2,1) both;
+    }
+    .glass {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-cyan-700 via-purple-700 to-pink-500 flex flex-col">
+  <div>
+    <%-include('../partials/nav')%>
+    <div class="flex flex-col items-center justify-center min-h-[80vh] px-4">
+      <div class="glass p-10 md:p-16 flex flex-col items-center gap-6 w-full max-w-2xl mt-16 shadow-2xl animate-fade-in-up">
+      
+        <span class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-pulse drop-shadow-lg text-center ">
+          <%if(user==='guest'|| user==='host')%>
+          <%{%>
+          Dear <%=name%>
+        <%}%></span>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-pulse drop-shadow-lg text-center">
+          Welcome To <span class="underline decoration-yellow-400">AirBnb</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-100 text-center max-w-xl mx-auto font-medium">
+          Discover <span class="font-bold text-yellow-300 animate-pulse">unique homes</span> and <span class="font-bold text-pink-300 animate-pulse">amazing experiences</span> around the world.<br>
+          <span class="text-purple-200">Your next adventure starts here!</span>
+        </p>
+        <%if(user=='guest'){ %> 
+          <a href="/homes" class="mt-6 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white font-bold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-bounce hover:animate-pulse ">
+          Explore Homes
+        </a>
+    <%  }%>
+      <%if(user=='host'){ %> 
+        <a href="/hosthomes" class="mt-6 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white font-bold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-bounce hover:animate-pulse ">
+        Your Homes
+      </a>
+   <% }%>
+      
+      </div>
+      
+     
+      </div>
+    </div>
+  </div>
+</body>
+</html>

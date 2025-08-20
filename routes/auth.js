@@ -1,0 +1,10 @@
+const express=require('express');
+const authRouter=express.Router();
+const {authGetLogin,authPostLogin,authLogOut,authGetSignUp,authPostSignUp,termsConditions}=require('../controller/authController');
+authRouter.get('/login',authGetLogin);
+authRouter.post('/login',authPostLogin);
+authRouter.get('/logout',authLogOut);
+authRouter.get('/signup',authGetSignUp);
+authRouter.post('/signup',authPostSignUp);
+authRouter.get('/terms&conditions',termsConditions);
+module.exports=authRouter;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIR BNB</title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-cyan-700 via-purple-700 to-pink-500 flex flex-col">
+  <div>
+    <%- include('../partials/nav.ejs') %>
+   <div class="flex flex-col items-center justify-center mt-10 mb-6">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-pulse drop-shadow-lg text-center mb-2">
+          Your Booking
+        </h1>
+        <p class="text-lg text-gray-200 mb-8">A curated list of homes you Booked!</p>
+      </div>
+    <% if (homes) { %>
+
+
+    <div class=" shadow-2xl shadow-gray-100 flex flex justify-center items-center flex-wrap p-2"> 
+    
+      <div class="relative group p-4 w-80 bg-white rounded-2xl border border-gray-300 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out flex flex-col items-center gap-3">
+  
+       
+        <div class="overflow-hidden rounded-full shadow-md">
+          <img 
+            src="<%= homes.PhotoURL %>" 
+            alt="HomeImage" 
+            class="w-56 h-56 rounded-full object-cover opacity-90 brightness-90 transition duration-700 group-hover:opacity-100 group-hover:brightness-105 group-hover:scale-105 group-hover:rotate-[5deg]"
+          >
+        </div>
+      
+      
+        <p class="text-lg font-bold text-gray-800">🏠 <%= homes.HomeName %></p>
+        <p class="text-sm font-semibold text-gray-600">📍 <%= homes.Location %></p>
+        <p class="text-md font-bold text-emerald-600">💲 <%= homes.Price %></p>
+        <p class="text-md font-bold text-yellow-500 animate-bounce">⭐ <%= homes.Rating %></p>
+      
+        
+        <a 
+          href="/unbook/<%= homes._id %>" 
+          class="absolute right-6 bottom-4 bg-red-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-red-600 hover:scale-105 transition-all duration-300 ease-in-out"
+        >
+          UnBook
+        </a>
+      </div>
+      
+
+ 
+     
+        
+       
+          
+        
+      
+    </div>
+  
+    <% } else { %>
+      <div class="w-full flex flex-col items-center mt-16">
+        <svg class="w-24 h-24 text-pink-300 mb-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z"/>
+        </svg>
+        <h3 class="text-2xl font-bold text-gray-200 mb-2">No Bookings yet!</h3>
+        <p class="text-gray-300">Start adding home to your Bookings to see them here.</p>
+      </div>
+      <% }%>
+  </div>
+</body>
+</html>

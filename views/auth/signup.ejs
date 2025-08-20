@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(40px);}
+        100% { opacity: 1; transform: translateY(0);}
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 1.2s cubic-bezier(0.4,0,0.2,1) both;
+      }
+      .glass {
+        background: rgba(255,255,255,0.18);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-cyan-700 via-purple-700 to-pink-500 flex flex-col">
+    <div>
+      <%-include('../partials/nav.ejs')%>
+    </div>
+    <div class="flex flex-col items-center justify-center min-h-[80vh] px-4">
+      <div class="glass p-10 md:p-14 flex flex-col items-center gap-8 w-full max-w-md mt-10 shadow-2xl animate-fade-in-up">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-pulse drop-shadow-lg text-center mb-2">
+          Register As A New User
+        </h1>
+        <form class="w-full flex flex-col gap-6" action="/signup" method="post" autocomplete="off">
+          <div class="flex flex-col gap-2">
+            <label for="fname" class="text-gray-200 font-semibold pl-1">First Name *</label>
+            <input
+              class="w-full px-4 py-3 rounded-lg bg-gray-800/80 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium shadow-inner"
+              placeholder="First Name"
+              type="text"
+              name="fname"
+              id="fname"
+              value="<%= obj?obj.fname :'' %>"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="lname" class="text-gray-200 font-semibold pl-1">Last Name</label>
+            <input
+              class="w-full px-4 py-3 rounded-lg bg-gray-800/80 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium shadow-inner"
+              placeholder="Last Name"
+              type="text"
+              name="lname"
+              id="lname"
+              value="<%= obj?obj.lname :'' %>"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="mail" class="text-gray-200 font-semibold pl-1">Email *</label>
+            <input
+              class="w-full px-4 py-3 rounded-lg bg-gray-800/80 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium shadow-inner"
+              placeholder="you@email.com"
+              type="email"
+              name="email"
+              id="mail"
+              value="<%= obj?obj.email :'' %>"
+              required
+              autocomplete="username"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="password" class="text-gray-200 font-semibold pl-1">Password *</label>
+            <input
+              class="w-full px-4 py-3 rounded-lg bg-gray-800/80 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium shadow-inner"
+              placeholder="Enter your password"
+              type="password"
+              name="password"
+              id="password"
+              value="<%= obj?obj.password :'' %>"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="cpassword" class="text-gray-200 font-semibold pl-1">Confirm Password *</label>
+            <input
+              class="w-full px-4 py-3 rounded-lg bg-gray-800/80 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium shadow-inner"
+              placeholder="Confirm your password"
+              type="password"
+              name="cpassword"
+              id="cpassword"
+              value="<%= obj?obj.cpassword :'' %>"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+          <div class="flex flex-col gap-3">
+            <h3 class="font-bold text-gray-200">User Type</h3>
+            <div class="flex gap-6 items-center">
+              <input
+                class="w-4 h-4 accent-pink-500"
+                type="radio"
+                name="userType"
+                value="guest"
+                id="guest"
+              />
+              <label class="font-semibold text-gray-100" for="guest">🙆Guest</label>
+              <input
+                class="w-4 h-4 accent-yellow-400"
+                type="radio"
+                name="userType"
+                id="host"
+                value="host"
+              />
+              <label class="font-semibold text-gray-100" for="host">🙋Host</label>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <input
+                class="w-4 h-4 accent-purple-500"
+                type="checkbox"
+                name="t&c"
+                id="t&c"
+                value="on"
+                required
+              />
+              <label class="font-semibold text-gray-200" for="t&c">
+                I agree to <a href="/terms&conditions" class="underline text-pink-300 hover:text-yellow-400">Terms & Conditions</a>.
+              </label>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 mt-2 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white font-bold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
+          >
+            Register
+          </button>
+        </form>
+        <div class="w-full mt-4">
+          <% if (arr && arr.length) { %>
+            <ul class="list-disc list-inside text-red-200 text-sm space-y-1">
+              <% arr.forEach(h => { %>
+                <li class="text-red-900 font-semibold"><%= h %></li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+        <div class="text-center mt-4">
+          <span class="text-gray-300">Already have an account?</span>
+          <a href="/login" class="text-pink-300 font-semibold hover:underline ml-1">Log in</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
