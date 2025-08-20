@@ -5,7 +5,7 @@ const mongoDB=require('connect-mongodb-session')(session);
 
 const app = express();
 const port = 1210;
-const db_Path ="mongodb+srv://root:Qwertyz%40123@anujchaudhary.ymavmtv.mongodb.net/AirBnb?retryWrites=true&w=majority&appName=AnujChaudhary";
+const db_Path ="mongodb+srv://root:*******%40***@anujchaudhary.ymavmtv.mongodb.net/AirBnb?retryWrites=true&w=majority&appName=AnujChaudhary";
 
 const auth = require("./routes/auth");
 const host = require("./routes/host");
@@ -54,3 +54,4 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
